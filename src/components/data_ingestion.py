@@ -1,16 +1,22 @@
 #data ingestion refers to the process of importing, collecting, and preparing data for analysis.
 
 import os
-import sys
+import sys  
+print(sys.path)
+
 # Add the project root to sys.path
 current_script_path = os.path.abspath(__file__)
 project_root = os.path.dirname(os.path.dirname(current_script_path))
 sys.path.append(project_root)
-#print(project_root)
+print(project_root)
 from exception import CustomException
 from logger import logging
 from data_transformation import DataTransformation
 from data_transformation import DataTransformationConfig
+
+from model_trainer import ModelTrainer
+from model_trainer import ModelTrainerConfig
+
 
 import pandas as pd
 
@@ -56,7 +62,9 @@ if __name__ == "__main__":
     train_data,test_data = data_ingestion.initiate_data_injection()
 
     data_transformation = DataTransformation()
-    data_transformation.initiate_data_transformation(train_data,test_data)
-
+    train_arr, test_arr,_ = data_transformation.initiate_data_transformation(train_data,test_data)\
+    
+    modeltrainer = ModelTrainer()
+    print(modeltrainer.initiate_model_trainer(train_arr,test_arr))
 
         
