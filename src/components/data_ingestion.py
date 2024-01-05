@@ -2,7 +2,6 @@
 
 import os
 import sys  
-print(sys.path)
 
 # Add the project root to sys.path
 current_script_path = os.path.abspath(__file__)
