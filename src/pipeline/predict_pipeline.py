@@ -23,6 +23,7 @@ class predictPipeline:
             preprocessor = load_object(file_path = preprocessor_path)
             print("After Loading")
             print(features)
+            print(features.loc[0])
             data_scaled = preprocessor.transform(features)
             pred = model.predict(data_scaled)
             return pred
@@ -60,8 +61,9 @@ class CustomData:
                 "reading_score": [self.reading_score],
                 "writing_score": [self.writing_score],
             }
-
-            return pd.DataFrame(custom_data_input_dict)
+            c_D= pd.DataFrame(custom_data_input_dict)
+            print(c_D)
+            return c_D
 
         except Exception as e:
             raise CustomException(e, sys)
